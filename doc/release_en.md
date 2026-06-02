@@ -27,6 +27,13 @@ Below are general modification suggestions.
 
 > Version numbers follow the `YY.MM.DD` format
 
+### 26.6.2
+
+* The comments component now supports author badges and admin comments, as well as paginated loading of additional comments and collapsible multi-reply threads.
+* Added support for footnote styles
+* Fixed color flickering issues during page transitions and optimized certain UI elements
+* This update modifies the configuration file `src/i18n/`, adding fields such as `comments.verificationRequired`; all other fields remain unchanged. When making modifications, simply add the new fields
+
 ### v26.5.6
 
 * Added the `LQIP` low-quality image placeholder feature

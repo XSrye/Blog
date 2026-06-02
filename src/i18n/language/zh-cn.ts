@@ -73,6 +73,7 @@ const translation: Translation = {
         loadFailed: "加载失败",
         submitSuccess: "提交成功",
         submitFailed: "提交失败，请稍后再试",
+        verificationRequired: "邮箱需要认证，请查收验证邮件",
         fillRequired: "请填写昵称、邮箱和评论内容",
         confirmDelete: "确定要删除这条评论吗？",
         delete: "删除",
@@ -95,6 +96,8 @@ const translation: Translation = {
         link: "链接",
         image: "图片",
         list: "列表",
+        showMoreReplies: "查看剩余回复",
+        collapseReplies: "收起回复",
     },
     langNote: {
         note: "注意：",
