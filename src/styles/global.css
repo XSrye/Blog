@@ -15,13 +15,14 @@
 
 @layer base {
   :root {
-    background-color: var(--bg-color);
-    background-image: var(--grain);
     color: var(--text-color);
   }
 
   body {
-    @apply bg-[--bg-color] text-[--text-color];
+    @apply text-[--text-color];
+    background-color: var(--bg-color);
+    background-image: var(--grain);
+    background-attachment: fixed;
     font-family: Georgia, "Iowan Old Style", "Noto Serif SC",
       "Source Han Serif SC", "Songti SC", SimSun, serif;
     font-size: 1.125rem;
