@@ -2,7 +2,6 @@
 
 <div align="center">
     <p>一个极简的Blog模板，使用 <a href="https://github.com/Motues/Momo">Momo项目</a> 搭建</p>
-    <small><ins>简体中文</ins></small> 
 
 
 ## 🚀 快速开始
