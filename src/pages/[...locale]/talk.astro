@@ -1,0 +1,57 @@
+---
+import MainPageLayout from '@layouts/MainPageLayout.astro'
+import Cover from '@components/Cover.astro'
+import PostCard from '@components/PostCard.astro'
+import FabMenu from '@components/control/FabMenu.astro'
+import { siteConfig } from '@/config'
+import { getBlogEntrySort } from '@utils/content-utils'
+import { blogCoverUrl } from '@utils/url-utils'
+import i18nit from '@i18n/translation'
+import { i18n } from "astro:config/client";
+
+const currentLang = Astro.currentLocale || i18n!.defaultLocale;
+const t = i18nit(currentLang);
+
+export async function getStaticPaths() {
+  return i18n?.locales.map(locale => ({ params: { locale: locale == i18n?.defaultLocale ? undefined : (locale as string) } }));
+}
+
+// 中文 "杂谈" / English "Talk"
+const categoryNames: Record<string, string> = {
+  'zh-cn': '杂谈',
+  'en': 'Talk',
+};
+const targetCategory = categoryNames[currentLang] || '杂谈';
+
+const allPosts = await getBlogEntrySort(currentLang);
+const filteredPosts = allPosts.filter(p => p.data.category === targetCategory);
+
+const pageTitle = t("header.talk") + " - " + siteConfig.title;
+const pageSubTitle = t("cover.subTitle.talk");
+---
+
+<MainPageLayout title={pageTitle} lang={currentLang}>
+  <Cover title={t("header.talk")} subTitle={pageSubTitle} />
+  <div class="post-list">
+    {filteredPosts.map(entry => (
+      <PostCard
+        entry={entry}
+        title={entry.data.title}
+        description={entry.data.description}
+        image={blogCoverUrl(entry.data.image, entry.id)}
+        pubDate={entry.data.pubDate}
+        url={entry.id}
+        fallback={entry.isFallback}
+      />
+    ))}
+  </div>
+  <FabMenu showBackBottom={true} />
+</MainPageLayout>
+
+<style is:global>
+  .post-list {
+    max-width: var(--page-width);
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+</style>

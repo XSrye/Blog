@@ -25,11 +25,11 @@ if (!aboutPost) {
 }
 const { Content } = await render(aboutPost);
 
-const pageTitle = t("header.about") + " - " + siteConfig.title;
+const pageTitle = "About - " + siteConfig.title;
 ---
 <MainPageLayout title={pageTitle} lang={currentLang}>
     <div class="mx-auto w-full max-w-[var(--page-width)]">
-        <Cover title={t("cover.title.about")} subTitle={t("cover.subTitle.about")}/>
+        <Cover title="About" subTitle="Shan's Blog"/>
         <Markdown class="mb-6 markdown-content onload-animation">
             <Content />
         </Markdown>

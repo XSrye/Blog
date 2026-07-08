@@ -20,7 +20,7 @@ export async function getStaticPaths() {
 // 获取所有博客文章并按发布日期降序排序
 const allBlogPosts = await getBlogEntrySort(currentLang);
 
-const pageTitle = t("header.archive") + " - " + siteConfig.title;
+const pageTitle = "Archives - " + siteConfig.title;
 ---
 
 <MainPageLayout title={pageTitle} lang={currentLang}>

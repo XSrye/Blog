@@ -1,20 +1,17 @@
 ---
 import '@styles/global.css'
-import { siteConfig, licenseConfig, profileConfig } from '@/config'
+import { siteConfig, profileConfig } from '@/config'
 import MainPageLayout from '@layouts/MainPageLayout.astro'
 import Markdown from '@components/misc/Markdown.astro'
 import ImageModule from '@components/misc/ImageModule.astro'
 import FabMenu from '@components/control/FabMenu.astro'
 import TOC from '@components/TOC.svelte'
-import LicenseCard from '@components/misc/LicenseCard.astro'
-import Comments from '@components/comment/Comments.svelte'
-import Twikoo from '@components/comment/thirdparty/twikoo.astro'
 import BlogNavi from '@components/control/BlogNavi.astro'
 
-import { getCollection, render } from 'astro:content'
+import { render } from 'astro:content'
 import { i18n } from "astro:config/client";
 import i18nit from '@i18n/translation'
-import { Icon } from "astro-icon/components";
+
 
 import { blogCoverUrl } from '@/utils/url-utils'
 import { formatFullDate } from '@/utils/time'
@@ -66,33 +63,26 @@ const image = blogCoverUrl(entry.data.image, entry.id);
 const { remarkPluginFrontmatter } = await render(entry);
 ---
 <MainPageLayout title={pageTitle} lang={currentLang} description={entry.data.description}>
-    <div class="mx-auto w-full max-w-[var(--page-width)] py-8 md:mt-0 mt-18">
-        <div class="mb-18 text-center">
-            <h1 class="font-bold text-3xl mb-2 pt-10 text-[var(--text-color)]">{ entry.data.title }</h1>
-            <p class="flex flex-wrap items-center justify-center font-bold text-[var(--text-color-70)] mt-6">
-                <Icon name="fa6-solid:calendar-days" class="mr-2"></Icon>
-                <span> { formatFullDate(entry.data.pubDate, currentLang) }</span>
-            </p>
-            <div class="flex justify-center">
-                <div class="flex flex-wrap items-center justify-center text-sm text-[var(--text-color-70)] mt-2 gap-2">
-                    <p class="flex items-center whitespace-nowrap mr-2">
-                        <Icon name="fa6-solid:pen-nib" class="mr-1"></Icon> 
-                        <span class="py-1 px-1">{remarkPluginFrontmatter.words || 0} {t("pagecard.words")}</span>
-                    </p>
-                    <p class="flex items-center whitespace-nowrap mr-2">
-                        <Icon name="fa6-solid:clock" class="mr-1"></Icon> 
-                        <span class="py-1 px-1">{remarkPluginFrontmatter.minutes || 0} {t("pagecard.minutes")}</span>
-                    </p>
-                    <p class="flex items-center whitespace-nowrap mr-2">
-                        <Icon name="fa6-solid:hashtag" class="mr-1"></Icon> 
-                        <a href={getRelativeLocaleUrl(currentLang, `/archives/?category=${entry.data.category}`)} class="category-tag">{entry.data.category || t("pagecard.uncategorized")}</a>
-                    </p>
+    <div class="mx-auto w-full max-w-[var(--page-width)] py-6">
+        <div class="mb-10 text-center">
+            <h1 class="font-bold text-2xl mb-3 text-[var(--text-color)]" style="line-height: 1.5;">{ entry.data.title }</h1>
+            <time class="block text-[var(--text-color-70)]" style="font-size: 0.85rem; letter-spacing: 0.03em;">{ formatFullDate(entry.data.pubDate, currentLang) }</time>
+            <div class="mt-2 text-sm text-[var(--text-color-70)]">{profileConfig.name}</div>
+            <div class="flex justify-center mt-3">
+                <div class="flex flex-wrap items-center justify-center text-xs text-[var(--text-color-70)] gap-3">
+                    <span>{remarkPluginFrontmatter.words || 0} {t("pagecard.words")}</span>
+                    <span>&middot;</span>
+                    <span>{remarkPluginFrontmatter.minutes || 0} {t("pagecard.minutes")}</span>
+                    {entry.data.category && <>
+                        <span>&middot;</span>
+                        <a href={getRelativeLocaleUrl(currentLang, `/archives/?category=${entry.data.category}`)} class="hover:text-[var(--link-color)] transition-colors">{entry.data.category}</a>
+                    </>}
                 </div>
             </div>
         </div>
         {image && (
-            <div class="cover overflow-hidden">
-                <ImageModule src={image} class="w-full h-full object-cover"/>
+            <div class="mb-8">
+                <ImageModule src={image} class="w-full h-full object-cover" style="border-radius: 2px;"/>
             </div>
         )}
         {entry.data.draft && (
@@ -128,21 +118,11 @@ const { remarkPluginFrontmatter } = await render(entry);
         <Markdown class="mb-6 mt-10 markdown-content onload-animation">
             <Content />
         </Markdown>
-        {licenseConfig.enable &&
-        <LicenseCard title={entry.data.title} pubDate={entry.data.pubDate}/>
-        }
         {
             siteConfig.blogNavi.enable &&
             <BlogNavi prev={prev} next={next}/>
         }
-        {
-            (siteConfig.comments.enable && siteConfig.comments.platform === "default") &&
-            <Comments postSlug={entry.data.slugId} language={currentLang} postTitle={entry.data.title} client:visible/>
-        }
-        {
-            (siteConfig.comments.enable && siteConfig.comments.platform === "twikoo") &&
-            <Twikoo postSlug={entry.data.slugId} language={currentLang} envId={siteConfig.comments.backendUrl}/>
-        }
+
     </div>
     {
         siteConfig.toc.enable &&

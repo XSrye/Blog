@@ -2,23 +2,23 @@ import type { Translation } from "@i18n/key";
 
 const translation: Translation = {
     header: {
-        home: "首页",
-        archive: "归档",
-        about: "关于",
-        friends: "友链",
+        essay: "杂文",
+        talk: "杂谈",
+        music: "杂乐",
+        link: "友链",
     },
     cover: {
         title: {
-            home: "欢迎来到Momo的博客",
-            archive: "文章归档",
-            about: "关于",
-            friends: "友链",
+            essay: "杂文",
+            talk: "杂谈",
+            music: "杂乐",
+            link: "友链",
         },
         subTitle: {
-            home: "生活多彩！",
-            archive: "共 {count} 篇文章",
-            about: "一个极简的Blog模板",
-            friends: "有趣的灵魂",
+            essay: "随笔、感想与记录",
+            talk: "知识与技术分享",
+            music: "音乐、卡片与趣味",
+            link: "有趣的灵魂",
         }
     },
     toc: "目录",

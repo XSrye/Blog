@@ -4,10 +4,8 @@ import type {
     LicenseConfig
 } from "./types/config"
 
-import type { FriendLink } from "./types/friend"
-
 export const siteConfig: SiteConfig = {
-    title: "Momo",
+    title: "Shan",
     subTitle: "Blog",
 
     favicon: "/favicon/favicon.ico", // Path of the favicon, relative to the /public directory
@@ -21,7 +19,7 @@ export const siteConfig: SiteConfig = {
         enable: true // Whether to enable blog navigation in the blog footer
     },
     comments: {
-        enable: true, // Whether to enable comments
+        enable: false, // Whether to enable comments
         platform: "default", // Comment platform, set "default" to use Momo-backend, also supports "twikoo"
         backendUrl: "https://api-momo.motues.top" // Backend URL for comments
     },
@@ -33,10 +31,10 @@ export const siteConfig: SiteConfig = {
 }
 
 export const profileConfig: ProfileConfig = {
-    avatar: "assets/Motues.jpg", // Relative to the /src directory. Relative to the /public directory if it starts with '/'
-    name: "Motues",
+    avatar: "assets/ayue.png", // Relative to the /src directory. Relative to the /public directory if it starts with '/'
+    name: "Rye",
     description: "Life is colorful!",
-    indexPage: "https://www.motues.top",
+    indexPage: "https://www.xs33.xyz",
     startYear: 2024,
 }
 
@@ -46,18 +44,3 @@ export const licenseConfig: LicenseConfig = {
 	url: "https://creativecommons.org/licenses/by-nc-sa/4.0/",
 };
 
-export const friendLinkConfig: FriendLink[] = [
-    {
-        name: 'Motues',
-        avatar: 'https://www.motues.top/avatar.jpg',
-        url: 'https://www.motues.top',
-        description: 'Like River!'
-    },
-    {
-        name: 'Astro',
-        avatar: 'https://avatars.githubusercontent.com/u/44914786',
-        url: 'https://astro.build',
-        description: 'Build fast websites, faster.'
-    }
-    // Add more friend links here
-]

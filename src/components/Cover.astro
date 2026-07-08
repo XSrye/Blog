@@ -9,8 +9,8 @@ interface Props {
 const { title, subTitle } = Astro.props;
 ---
 
-<!-- Cover -->
-<div class="text-center pt-5 pb-10 max-w-[var(--page-width)] mx-auto md:mt-0 mt-28">
-    { title && <p class="text-[var(--text-color)] text-3xl py-5 font-bold">{ title }</p> }
-    { subTitle && <p class="text-[var(--text-color-70)] font-bold">{ subTitle }</p> }
+<!-- Cover (Vermilion style) -->
+<div class="text-center py-8 max-w-[var(--page-width)] mx-auto">
+    { title && <p class="text-[var(--text-color)] text-2xl font-semibold py-4">{ title }</p> }
+    { subTitle && <p class="text-[var(--text-color-70)] text-base">{ subTitle }</p> }
 </div>

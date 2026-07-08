@@ -1,9 +1,8 @@
 ---
 import "@styles/global.css"
-import ImageModule from "./misc/ImageModule.astro";
 
 import type { CollectionEntry } from 'astro:content';
-import { getCollection, render } from 'astro:content'
+import { render } from 'astro:content'
 
 import { getRelativeLocaleUrl } from '@utils/url-utils';
 import { formatFullDate } from '@/utils/time'
@@ -31,72 +30,82 @@ const pageUrl = getRelativeLocaleUrl(currentLang, "/blog/" + url);
 const { remarkPluginFrontmatter } = await render(entry);
 ---
 
-<div data-aos="fade-up"  class="block min-w-0 w-full max-w-[var(--page-width)] mx-auto my-6  rounded-xl shadow border border-[var(--button-border-color)] overflow-hidden">
-    {image && (
-        <a href={pageUrl} class="cover h-60 overflow-hidden hover-scale block">
-            <ImageModule src={image} alt={title} class="w-full h-full object-cover"/>
-        </a>
-    )}
-    <div class="content p-6">
-        <a href={pageUrl} class="title text-xl font-semibold text-[var(--text-color)] mb-3 hover:text-[var(--link-color)] active:text-[var(--link-color)] flex items-center group transition-colors duration-300 ease-in-out">
-            <span class="flex items-center">
-                {entry.data.pinTop > 0 && <Icon name="fluent:pin-24-filled" class="mr-1" />} {title}
-            </span>
-            <Icon 
-                name="fa6-solid:angle-right" 
-                class="ml-2 opacity-100 md:opacity-0 md:group-hover:opacity-100 transform md:translate-x-[-5px] md:group-hover:translate-x-0 transition-all duration-300 ease-in-out text-[var(--text-color)] group-hover:text-[var(--link-color)] group-active:text-[var(--link-color)]"
-            />
-        </a>
-        <p class="description text-[var(--text-color-70)] leading-relaxed mt-2">
-            {
-                fallback && (
-                <span class="self-center px-1 mr-2 text-sm text-[var(--text-color-70)] font-mono uppercase bg-[var(--button-hover-color)] rounded border border-[var(--button-border-color)]">{i18n!.defaultLocale}</span>
-                )
-            }
-            {description}
-        </p>
-        <div class="flex items-center justify-start text-sm text-[var(--text-color-70)] mt-4 space-x-4">
-            <p class="pubdate flex items-center whitespace-nowrap">
-                <Icon name="fa6-solid:calendar-days" class="mr-1"></Icon> 
-                <span class="py-1 px-1">{formatFullDate(pubDate, currentLang)}</span>
-            </p>
-        </div>
-        <div class="flex flex-wrap items-center justify-start text-sm text-[var(--text-color-70)] mt-2 gap-2">
-            <p class="words flex items-center whitespace-nowrap mr-2">
-                <Icon name="fa6-solid:pen-nib" class="mr-1"></Icon> 
-                <span class="py-1 px-1">{remarkPluginFrontmatter.words || 0} {t("pagecard.words")}</span>
-            </p>
-            <p class="reading-time flex items-center whitespace-nowrap mr-2">
-                <Icon name="fa6-solid:clock" class="mr-1"></Icon> 
-                <span class="py-1 px-1">{remarkPluginFrontmatter.minutes || 0} {t("pagecard.minutes")}</span>
-            </p>
-            <p class="flex items-center whitespace-nowrap mr-2">
-                <Icon name="fa6-solid:hashtag" class="mr-1"></Icon> 
-                <a href={getRelativeLocaleUrl(currentLang, `/archives/?category=${entry.data.category}`)} class="category-tag">{entry.data.category || t("pagecard.uncategorized")}</a>
-            </p>
-        </div>
-    </div>
+<div data-aos="fade-up" class="blog-post-item">
+  <span class="blog-post-date">{formatFullDate(pubDate, currentLang)}</span>
+  <div class="blog-post-content">
+    <a href={pageUrl} class="blog-post-title">
+      {entry.data.pinTop > 0 && <Icon name="fluent:pin-24-filled" class="pin-icon" />}
+      {title}
+    </a>
+    {fallback && <span class="fallback-badge">{i18n!.defaultLocale}</span>}
+    {description && <p class="blog-post-desc">{description}</p>}
+  </div>
 </div>
 
 <style is:global>
-.hover-scale {
-  transition: transform 0.3s ease;
+.blog-post-item {
+  display: flex;
+  align-items: baseline;
+  gap: 1.2em;
+  padding: 0.4em 0;
+  border-bottom: 1px solid var(--hairline);
 }
-
-.hover-scale:hover {
-  transform: scale(1.05);
+.blog-post-item:last-child {
+  border-bottom: none;
 }
-.category-tag {
-  transition: all 0.3s ease;
-  background-color: transparent;
-  display: inline-block;
-  border-radius: 0.25rem;
-  padding: 0.25rem 0.25rem; 
+.blog-post-date {
+  flex-shrink: 0;
+  min-width: 6.5em;
+  font-size: 0.85rem;
+  color: var(--text-color-70);
+  font-variant-numeric: tabular-nums;
 }
-
-.category-tag:hover {
+.blog-post-content {
+  flex: 1;
+  min-width: 0;
+}
+.blog-post-title {
+  color: var(--text-color);
+  text-decoration: none;
+  font-size: 1.05rem;
+  transition: color 0.2s ease;
+}
+.blog-post-title:hover {
   color: var(--link-color);
-  background-color: var(--button-hover-color);
-  text-shadow: 0.5px 0 0 currentColor, -0.5px 0 0 currentColor;
+}
+.pin-icon {
+  display: inline;
+  margin-right: 0.25em;
+  width: 0.85em;
+  height: 0.85em;
+  color: var(--link-color);
+}
+.fallback-badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  color: var(--text-color-70);
+  font-family: monospace;
+  text-transform: uppercase;
+  background: var(--code-bg);
+  padding: 0.1em 0.4em;
+  border-radius: 3px;
+  margin-left: 0.5em;
+  border: 1px solid var(--hairline);
+}
+.blog-post-desc {
+  margin: 0.2em 0 0;
+  font-size: 0.85rem;
+  color: var(--text-color-70);
+  line-height: 1.5;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+@media (max-width: 600px) {
+  .blog-post-item {
+    flex-direction: column;
+    gap: 0.1em;
+    padding: 0.6em 0;
+  }
 }
 </style>

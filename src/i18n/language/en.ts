@@ -2,23 +2,23 @@ import type { Translation } from "@i18n/key";
 
 const translation: Translation = {
     header: {
-        home: "Home",
-        archive: "Archive",
-        about: "About",
-        friends: "Friends",
+        essay: "Essay",
+        talk: "Talk",
+        music: "Music",
+        link: "Link",
     },
     cover: {
         title: {
-            home: "Welcome to Momo's Blog",
-            archive: "Archive",
-            about: "About",
-            friends: "Friends",
+            essay: "Essay",
+            talk: "Talk",
+            music: "Music",
+            link: "Link",
         },
         subTitle: {
-            home: "Life is colorful!",
-            archive: "Total of {count} articles",
-            about: "A minimalist blog template",
-            friends: "Interesting Souls",
+            essay: "Thoughts & Reflections",
+            talk: "Knowledge & Tech",
+            music: "Music & Fun",
+            link: "Interesting Souls",
         }
     },
     toc: "Contents",

@@ -4,19 +4,36 @@
 @import "./scrollbar.css";
 @import "@chinese-fonts/lxgwwenkaibright/dist/LXGWBright-Medium/result.css";
 
-@layer base {
+/* ===== Vermilion Paper Grain Texture ===== */
+:root {
+  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23g)'/%3E%3C/svg%3E");
+}
 
+[data-theme="dark"] {
+  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.04 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23g)'/%3E%3C/svg%3E");
+}
+
+@layer base {
   :root {
     background-color: var(--bg-color);
+    background-image: var(--grain);
     color: var(--text-color);
   }
 
   body {
     @apply bg-[--bg-color] text-[--text-color];
-    font-family: "Noto Serif SC", "Times New Roman", "STZhongsong", serif;
+    font-family: Georgia, "Iowan Old Style", "Noto Serif SC",
+      "Source Han Serif SC", "Songti SC", SimSun, serif;
+    font-size: 1.125rem;
+    line-height: 1.9;
+    max-width: 650px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem;
     overflow-y: scroll;
+    -webkit-font-smoothing: antialiased;
+    overflow-wrap: break-word;
+    -webkit-text-size-adjust: 100%;
   }
-  
 
   ::selection {
     background-color: var(--selection-bg-color);
@@ -27,5 +44,12 @@
     background-color: var(--selection-bg-color);
     color: var(--selection-text-color);
   }
+}
 
+@media (max-width: 600px) {
+  body {
+    padding: 1.4rem 1.1rem;
+    font-size: 1.05rem;
+    line-height: 1.85;
+  }
 }

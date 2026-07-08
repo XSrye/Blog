@@ -1,22 +1,22 @@
 export interface Translation {
     header: {
-        home: string;
-        archive: string;
-        about: string;
-        friends: string;
+        essay: string;
+        talk: string;
+        music: string;
+        link: string;
     };
     cover: {
         title: {
-            home: string;
-            archive: string;
-            about: string;
-            friends: string;
+            essay: string;
+            talk: string;
+            music: string;
+            link: string;
         };
         subTitle: {
-            home: string;
-            archive: string;
-            about: string;
-            friends: string;
+            essay: string;
+            talk: string;
+            music: string;
+            link: string;
         };
     };
     toc:string;

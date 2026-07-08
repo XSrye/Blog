@@ -1,6 +1,5 @@
 ---
 import MainPageLayout from '@layouts/MainPageLayout.astro';
-import Cover from '@components/Cover.astro';
 import PostPage from '@components/PostPage.astro';
 import Navi from '@components/control/Navi.astro';
 import FabMenu from '@components/control/FabMenu.astro';
@@ -65,8 +64,37 @@ const pageTitle = `${siteConfig.title} - ${siteConfig.subTitle}`;
 ---
 
 <MainPageLayout title={pageTitle} lang={currentLang}>
-    <Cover title={t("cover.title.home")} subTitle={t("cover.subTitle.home")} />
+    <div class="bio-section">
+      <p class="bio-greeting">Hi！</p>
+      <p>我是 Shan，目前在杭州做 IT 牛马一名。</p>
+      <p>工作之外的时间，我喜欢瞎折腾一些跟本职工作相关，但又不是强关联的东西，可能是一项新的开源项目，或者是一条没走过的徒步路线。总觉得人生嘛，多折腾点才有意思。</p>
+      <p>这个博客是我的自留地，写得比较随意。有时候是技术笔记，有时候是生活记录，有时候纯粹是突然想到的几句话。</p>
+      <p class="bio-closing">如果你恰好路过，欢迎停留一下。</p>
+    </div>
     <PostPage page={page} />
     <Navi page={page} />
     <FabMenu showBackBottom={true} />
 </MainPageLayout>
+
+<style is:global>
+.bio-section {
+  max-width: var(--page-width);
+  margin: 0 auto;
+  padding: 1.5rem 1rem 0.8rem;
+  line-height: 1.9;
+  font-size: 0.95rem;
+  color: var(--text-color);
+}
+.bio-section p {
+  margin: 0.6em 0;
+}
+.bio-greeting {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 0.8em;
+}
+.bio-closing {
+  margin-top: 1em;
+  color: var(--link-color);
+}
+</style>

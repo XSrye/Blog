@@ -1,5 +1,5 @@
 
-Momo originates from Xiaohongshu's 📕, serving as every new user's initial nickname, symbolizing a fresh start. The blog's design philosophy stems from this concept, beginning with simplicity to strike a balance between complex functionality and minimalist aesthetics.
+Shan originates from Xiaohongshu's 📕, serving as every new user's initial nickname, symbolizing a fresh start. The blog's design philosophy stems from this concept, beginning with simplicity to strike a balance between complex functionality and minimalist aesthetics.
 
 ## ✨ Features
 

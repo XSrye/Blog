@@ -37,10 +37,6 @@ const postAuthor = author ?? profileConfig.name;
     </a>
     <div class="flex gap-6 mt-3 text-sm">
         <div>
-            <div class="transition text-[var(--text-color-70)]">{t("license.author")}</div>
-            <div class="transition text-[var(--text-color)] font-bold">{postAuthor}</div>
-        </div>
-        <div>
             <div class="transition text-[var(--text-color-70)]">{t("license.publishon")}</div>
             <div class="transition text-[var(--text-color)] font-bold">{formatFullDate(pubDate, currentLang)}</div>
         </div>
