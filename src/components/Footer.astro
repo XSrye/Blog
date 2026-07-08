@@ -1,21 +1,10 @@
 ---
 import { Icon } from "astro-icon/components";
-import { profileConfig } from "../config";
 ---
 
 <!-- footer (Vermilion style) -->
-<footer class="flex flex-col md:flex-row md:justify-between items-start md:items-center py-6 text-[var(--text-color-70)] max-w-[var(--header-width)] mx-auto w-full" style="font-size: 0.85rem;">
-    <div class="mb-1 md:mb-0">
-        &copy; {profileConfig.startYear} &ndash; {new Date().getFullYear()} {profileConfig.name}
-    </div>
-    <div class="flex items-center gap-3">
-        <a target="_blank" href="https://astro.build" title="Astro"><Icon name="simple-icons:astro" class="inline-block w-4 h-4" /></a>
-        <a target="_blank" href="https://svelte.dev/" title="Svelte"><Icon name="simple-icons:svelte" class="inline-block w-4 h-4" /></a>
-        <a target="_blank" href="https://tailwindcss.com/" title="Tailwind CSS"><Icon name="simple-icons:tailwindcss" class="inline-block w-4 h-4" /></a>
-        <a target="_blank" href="https://github.com/Motues/Momo" title="GitHub"><Icon name="simple-icons:github" class="inline-block w-4 h-4" /></a>
-        <span class="text-[var(--hairline)]">|</span>
-        <a href="/rss.xml" target="_self" title="RSS"><Icon name="simple-icons:rss" class="inline-block w-4 h-4" /></a>
-    </div>
+<footer class="flex justify-center py-6 text-[var(--text-color-70)] max-w-[var(--header-width)] mx-auto w-full" style="font-size: 0.85rem;">
+    <a href="/rss.xml" target="_self" title="RSS"><Icon name="simple-icons:rss" class="inline-block w-4 h-4" /></a>
 </footer>
 
 <style>
