@@ -30,7 +30,7 @@ const pageUrl = getRelativeLocaleUrl(currentLang, "/blog/" + url);
 const { remarkPluginFrontmatter } = await render(entry);
 ---
 
-<div data-aos="fade-up" class="blog-post-item">
+<div class="blog-post-item">
   <span class="blog-post-date">{formatFullDate(pubDate, currentLang)}</span>
   <div class="blog-post-content">
     <a href={pageUrl} class="blog-post-title">

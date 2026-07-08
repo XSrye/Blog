@@ -24,7 +24,7 @@ export const siteConfig: SiteConfig = {
         backendUrl: "https://api-momo.motues.top" // Backend URL for comments
     },
     theme: {
-        AOS: true, // Whether to enable AOS (Animate On Scroll) for animations
+        AOS: false, // Whether to enable AOS (Animate On Scroll) for animations
         LQIP: true, // Whether to enable LQIP (Low-Quality Image Placeholder) for image placeholders
         PhotoSwipe: true // Whether to enable PhotoSwipe for image viewer
     }
