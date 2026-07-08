@@ -24,7 +24,7 @@ import { siteConfig } from './src/config';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://momo.motues.top', // Root URL of site
+  site: 'https://blog.pages.dev', // 部署后用实际域名替换 blog.pages.dev
   i18n: {
     locales: ['zh-cn', 'en'],
     defaultLocale: 'zh-cn',
