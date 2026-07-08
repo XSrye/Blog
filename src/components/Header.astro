@@ -44,6 +44,7 @@ const musicPage = getRelativeLocaleUrl(currentLang, "/music/");
     <div class="title-tools-row">
         <div class="title">
             <h1><a href={ indexPage }>{ siteConfig.title }</a></h1>
+            <a href="/rss.xml" target="_self" title="RSS" class="rss-icon"><Icon name="simple-icons:rss" class="inline-block w-4 h-4" /></a>
         </div>
         <div class="header-tools">
             <button id="search-button" class="tool-btn" aria-label="Search">
@@ -127,6 +128,11 @@ const musicPage = getRelativeLocaleUrl(currentLang, "/music/");
   align-items: center;
   justify-content: space-between;
 }
+.title {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
 .title h1 {
   font-size: 1.5rem;
   font-weight: 600;
@@ -148,6 +154,14 @@ const musicPage = getRelativeLocaleUrl(currentLang, "/music/");
   background: var(--link-color);
   border-radius: 1px;
   vertical-align: baseline;
+}
+.rss-icon {
+  color: var(--text-color-70);
+  transition: color 0.2s ease;
+  line-height: 1;
+}
+.rss-icon:hover {
+  color: var(--link-color);
 }
 .desktop-nav {
   display: flex;
